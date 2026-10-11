@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0a0d13" />
+<title>2858元活一年｜数据新闻长图</title>
+<style>
+:root{
+  --bg:#090c12; --bg2:#0f141d; --panel:#141b26; --panel2:#192331;
+  --text:#f5f0e8; --muted:#9da8b6; --dim:#6d7887; --line:rgba(255,255,255,.1);
+  --cyan:#74f1d0; --cyan2:#39cbb2; --orange:#ffb35a; --red:#ff6b6b; --purple:#b29cff; --blue:#6395ff;
+  --shadow:0 22px 80px rgba(0,0,0,.35); --radius:24px; --progress:0;
+  --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:
+  radial-gradient(900px 500px at 80% -10%,rgba(110,76,225,.14),transparent 70%),
+  linear-gradient(180deg,#080b11 0%,#0a0e15 40%,#101722 100%);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.4),transparent 80%)}
+button{font:inherit;color:inherit}
+.topbar{position:fixed;z-index:50;top:0;left:0;right:0;height:68px;padding:0 28px;display:flex;align-items:center;gap:18px;background:linear-gradient(180deg,rgba(9,12,18,.92),rgba(9,12,18,.55),transparent);backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.brand-mark{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:var(--cyan);color:#0b1313;font-weight:900;font-size:12px}
+.progress{height:2px;flex:1;background:rgba(255,255,255,.12);border-radius:999px;position:relative;overflow:hidden}
+.progress:after{content:"";position:absolute;inset:0;transform-origin:left;transform:scaleX(var(--progress));background:linear-gradient(90deg,var(--cyan),var(--orange));box-shadow:0 0 18px rgba(116,241,208,.65)}
+.topbar-meta{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--dim);white-space:nowrap}
+.meta-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}
+.side-nav{position:fixed;z-index:40;right:25px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:11px}
+.side-nav button{width:28px;height:28px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;padding:0}
+.side-nav button:after{content:"";width:6px;height:6px;border-radius:50%;background:var(--dim);transition:.25s ease}
+.side-nav button.active:after{width:9px;height:9px;background:var(--cyan);box-shadow:0 0 18px rgba(116,241,208,.85)}
+.side-nav button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:50%}
+.section{min-height:100svh;position:relative;scroll-margin-top:70px;display:flex;align-items:center;padding:110px max(7vw,24px) 80px;overflow:hidden}
+.section-inner{width:min(1120px,100%);margin:0 auto;position:relative;z-index:2}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.kicker{color:var(--muted);font-size:14px;max-width:680px}
+h1,h2,h3,p{margin:0}
+h2{font-size:clamp(32px,5vw,70px);line-height:1.05;letter-spacing:-.05em;max-width:880px}
+h3{font-size:clamp(21px,3vw,34px);line-height:1.15;letter-spacing:-.03em}
+.lede{font-size:clamp(16px,1.75vw,21px);line-height:1.75;color:#d8dde5;max-width:760px}
+.source{font-size:11px;color:var(--dim);letter-spacing:.04em}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:34px}
+.section-head .title-wrap{max-width:760px}
+.section-head .page-no{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.14em;white-space:nowrap}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.section.active .reveal{opacity:1;transform:none}
+.section.active .reveal.delay-1{transition-delay:.08s}.section.active .reveal.delay-2{transition-delay:.16s}.section.active .reveal.delay-3{transition-delay:.24s}.section.active .reveal.delay-4{transition-delay:.32s}
+.btn{border:1px solid rgba(116,241,208,.4);background:rgba(116,241,208,.08);padding:12px 18px;border-radius:999px;cursor:pointer;min-height:44px;transition:.25s ease;font-weight:600;font-size:14px}
+.btn:hover,.btn:focus-visible{background:var(--cyan);color:#07110f;transform:translateY(-2px);outline:none}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-size:11px}
+.tag.warn{border-color:rgba(255,179,90,.4);color:var(--orange);background:rgba(255,179,90,.06)}
+.tag.red{border-color:rgba(255,107,107,.35);color:var(--red);background:rgba(255,107,107,.06)}
+.card{background:linear-gradient(145deg,rgba(25,34,48,.9),rgba(15,21,30,.9));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.mono{font-family:var(--mono)}
+.big-number{font-size:clamp(58px,10vw,150px);font-weight:900;line-height:.82;letter-spacing:-.09em}
+.number-accent{color:var(--cyan);text-shadow:0 0 30px rgba(116,241,208,.32)}
+.number-orange{color:var(--orange);text-shadow:0 0 30px rgba(255,179,90,.22)}
+/* hero */
+.hero{min-height:100svh;align-items:flex-end;padding-bottom:76px}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 72% 47%,rgba(80,130,255,.18),transparent 22%),radial-gradient(circle at 68% 53%,rgba(181,115,255,.14),transparent 34%),linear-gradient(90deg,rgba(9,12,18,.98) 0%,rgba(9,12,18,.78) 48%,rgba(9,12,18,.12) 100%);z-index:1}
+.hero-visual{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 70% 68%,#192746 0%,#111725 24%,#0a0e17 60%)}
+.hero-visual:before{content:"";position:absolute;width:38vw;height:78vh;min-width:340px;right:8vw;bottom:-12vh;border-radius:45% 45% 0 0;background:linear-gradient(145deg,#161d2d,#0c111b 65%);transform:rotate(-8deg);box-shadow:-20px 0 80px rgba(73,111,226,.12)}
+.phone{position:absolute;width:min(31vw,280px);height:min(64vw,560px);right:23vw;bottom:9vh;border:8px solid #20293b;border-radius:34px;background:linear-gradient(180deg,rgba(99,149,255,.35),rgba(72,39,130,.28) 45%,rgba(7,10,16,.95) 100%);box-shadow:0 0 0 1px rgba(255,255,255,.16),0 30px 70px rgba(0,0,0,.58),-20px 0 60px rgba(103,141,255,.2);transform:rotate(-8deg)}
+.phone:before{content:"";position:absolute;left:14%;right:14%;top:16%;height:22%;border-radius:18px;background:linear-gradient(135deg,rgba(130,226,255,.46),rgba(130,99,255,.15));filter:blur(1px);box-shadow:0 45px 0 rgba(118,79,202,.12),0 90px 0 rgba(110,75,176,.1)}
+.phone:after{content:"";position:absolute;width:50px;height:6px;border-radius:999px;top:9px;left:50%;transform:translateX(-50%);background:#0a0e16}
+.hero-copy{max-width:900px}.hero-title{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;margin:15px 0 28px}.hero-title .unit{font-size:clamp(34px,5.5vw,80px);font-weight:800;letter-spacing:-.06em;line-height:.9;padding-bottom:5px}.hero-title .year{font-size:14px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;align-self:center;margin-left:4px}.hero-subtitle{font-size:clamp(20px,3.1vw,38px);color:var(--orange);letter-spacing:-.03em;margin-bottom:18px}.hero-lede{font-size:clamp(16px,1.8vw,21px);max-width:640px;color:#d6dce5;line-height:1.75}.hero-foot{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
+.scroll-hint{position:absolute;right:7vw;bottom:38px;z-index:3;color:var(--muted);font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:10px}.scroll-hint:after{content:"";width:36px;height:1px;background:var(--cyan)}
+/* bill */
+.bill-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:stretch}
+.ledger{padding:26px 28px 24px;background:#e7dfce;color:#26323d;border-radius:24px;position:relative;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.3);transform:rotate(-1deg)}
+.ledger:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 34px,rgba(48,94,125,.12) 35px,transparent 36px);pointer-events:none}.ledger:after{content:"";position:absolute;left:16px;top:0;bottom:0;width:1px;background:rgba(203,81,73,.34)}
+.ledger-title{font-family:"Bradley Hand",cursive;font-size:24px;margin-bottom:16px;padding-left:12px;color:#24394b}.ledger-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:8px 6px 8px 14px;font-family:"Bradley Hand",cursive;font-size:18px;position:relative}.ledger-row span:last-child{font-family:var(--mono);font-size:15px}.ledger-row:after{content:"";position:absolute;left:14px;right:0;bottom:0;border-bottom:1px dashed rgba(38,50,61,.18)}.ledger-total{margin:18px 0 0 12px;font-family:"Bradley Hand",cursive;font-size:24px;font-weight:800;display:flex;justify-content:space-between;align-items:center}.ledger-total strong{color:#bd413d;font-size:32px;transform:rotate(-3deg);border:3px solid #bd413d;padding:3px 11px;border-radius:50%}
+.comment-panel{padding:26px;display:flex;flex-direction:column;justify-content:space-between}.comment-tabs{display:flex;gap:8px;margin:20px 0 18px}.comment-tabs button{flex:1;border:1px solid var(--line);background:transparent;min-height:44px;border-radius:12px;color:var(--muted);cursor:pointer}.comment-tabs button.active{border-color:rgba(116,241,208,.45);color:var(--cyan);background:rgba(116,241,208,.08)}.comment-quote{padding:20px;border-left:3px solid var(--orange);background:rgba(255,179,90,.07);border-radius:0 16px 16px 0;min-height:130px;display:flex;align-items:center;font-size:clamp(18px,2.4vw,28px);line-height:1.35}.micro-stat{margin-top:20px;display:flex;gap:20px;flex-wrap:wrap}.micro-stat div{font-size:12px;color:var(--muted)}.micro-stat strong{display:block;font-size:28px;color:var(--text);letter-spacing:-.04em}
+/* donut */
+.donut-layout{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}.donut-wrap{display:grid;place-items:center;position:relative;min-height:380px}.donut-wrap svg{width:min(100%,420px);overflow:visible}.donut-center{position:absolute;text-align:center;pointer-events:none}.donut-center strong{display:block;font-size:clamp(40px,6vw,72px);letter-spacing:-.08em;line-height:.9;color:var(--cyan)}.donut-center span{display:block;color:var(--muted);font-size:13px;margin-top:8px}.donut-legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:-8px}.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px}.data-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.data-card{padding:22px;border-radius:20px;background:rgba(19,28,40,.76);border:1px solid var(--line);transition:.3s}.data-card:hover{border-color:rgba(116,241,208,.48);transform:translateY(-4px)}.data-card strong{display:block;font-size:clamp(36px,5vw,60px);letter-spacing:-.08em;color:var(--cyan);line-height:1}.data-card span{display:block;color:#dbe0e7;font-size:13px;margin-top:12px}.meter{height:6px;background:rgba(255,255,255,.1);border-radius:999px;margin-top:18px;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:inherit;width:var(--w);transform:scaleX(0);transform-origin:left;transition:transform 1s .3s}.section.active .meter i{transform:scaleX(1)}
+/* compare */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}.compare-col{padding:22px;border-radius:20px;border:1px solid var(--line)}.compare-col.trad{background:linear-gradient(145deg,rgba(97,108,125,.16),rgba(18,25,34,.8))}.compare-col.new{background:linear-gradient(145deg,rgba(255,179,90,.14),rgba(18,25,34,.8));border-color:rgba(255,179,90,.27)}.compare-col h3{font-size:20px;margin-bottom:16px}.compare-row{display:grid;grid-template-columns:24px 1fr;gap:10px;padding:12px 0;border-top:1px solid rgba(255,255,255,.08);font-size:14px;color:#d4dae2}.compare-row b{font-family:var(--mono);font-size:11px;color:var(--orange)}.iceberg{position:relative;min-height:290px;border-radius:24px;padding:24px;background:linear-gradient(180deg,rgba(98,159,207,.12) 0 31%,rgba(27,91,128,.19) 31% 100%);overflow:hidden;border:1px solid rgba(116,201,255,.18)}.waterline{position:absolute;left:0;right:0;top:31%;border-top:1px dashed rgba(185,232,255,.62);display:flex;justify-content:flex-end;padding-right:16px;color:#aee7ff;font-size:11px}.ice-top{position:absolute;left:50%;top:7%;transform:translateX(-50%);width:150px;height:86px;background:linear-gradient(165deg,#e9f8ff,#78c6eb 80%);clip-path:polygon(50% 0,94% 100%,6% 100%);filter:drop-shadow(0 10px 14px rgba(93,198,246,.24));display:grid;place-items:center;color:#123346;font-weight:800;font-size:13px;text-align:center}.ice-bottom{position:absolute;left:50%;top:38%;transform:translateX(-50%);width:min(80%,500px);height:230px;background:linear-gradient(180deg,#2a7397,#153c64);clip-path:polygon(47% 0,100% 100%,0 100%);display:flex;justify-content:center;align-items:flex-start;padding-top:24px;text-align:center;color:#d8f2ff;font-size:15px;font-weight:800}.ice-note{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#9ed9ec;font-size:12px}.ice-trigger{position:absolute;right:18px;top:14px;z-index:2}
+/* sankey */
+.sankey-shell{padding:24px 18px 12px}.sankey-shell svg{width:100%;height:auto;display:block}.flow{opacity:.68;transition:opacity .25s,filter .25s;cursor:pointer}.flow:hover,.flow.selected{opacity:1;filter:drop-shadow(0 0 8px rgba(116,241,208,.35))}.flow-label{font-size:12px;fill:#dbe5ef}.flow-small{font-size:11px;fill:#92a1b2}.sankey-caption{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:0 6px;color:var(--muted);font-size:12px}.quote-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}.quote{padding:18px 20px;border-radius:18px;background:rgba(20,28,40,.72);border:1px solid var(--line);font-size:15px;color:#c9d3de}.quote b{color:var(--orange);font-size:12px;display:block;margin-bottom:5px}
+/* scatter */
+.scatter-layout{display:grid;grid-template-columns:1.35fr .65fr;gap:24px;align-items:stretch}.scatter-card{padding:18px 18px 12px}.scatter-card svg{width:100%;height:auto;display:block}.axis{stroke:rgba(255,255,255,.22);stroke-width:1}.gridline{stroke:rgba(255,255,255,.07);stroke-width:1}.trend{stroke:var(--orange);stroke-width:2;stroke-dasharray:5 7;fill:none;opacity:.8}.bubble{cursor:pointer;stroke:rgba(255,255,255,.72);stroke-width:1.2;transition:.2s}.bubble:hover,.bubble.active{stroke:#fff;stroke-width:2.5;filter:drop-shadow(0 0 9px rgba(116,241,208,.7))}.chart-note{padding:18px 20px;border-radius:20px;background:linear-gradient(150deg,rgba(255,179,90,.14),rgba(20,28,40,.75));border:1px solid rgba(255,179,90,.28);color:#e7e2d7}.chart-note strong{display:block;font-size:14px;color:var(--orange);margin-bottom:10px}.chart-note p{font-size:13px;color:#ccd2dc;line-height:1.7}.mini-list{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px}.mini-list li{display:flex;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px}.mini-list b{color:var(--cyan);font-family:var(--mono)}.tooltip{position:fixed;z-index:60;pointer-events:none;display:none;max-width:240px;padding:10px 12px;border-radius:10px;background:#0c121c;color:#eaf0f6;border:1px solid rgba(116,241,208,.4);box-shadow:0 12px 28px rgba(0,0,0,.4);font-size:12px;line-height:1.5}
+/* jobs */
+.jobs-layout{display:grid;grid-template-columns:1fr 1fr;gap:22px}.jobs-card{padding:24px}.bars{height:320px;display:flex;align-items:flex-end;justify-content:center;gap:50px;padding:20px 10px 0;border-bottom:1px solid rgba(255,255,255,.18);position:relative}.bar-col{display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;justify-content:flex-end}.bar{width:clamp(72px,9vw,132px);height:var(--h);border-radius:14px 14px 3px 3px;transform:scaleY(0);transform-origin:bottom;transition:transform 1s .2s;position:relative}.section.active .bar{transform:scaleY(1)}.bar.grad{background:linear-gradient(180deg,var(--orange),#c66b2c)}.bar.gray{background:linear-gradient(180deg,#75859d,#3b4553)}.bar-val{font-family:var(--mono);font-size:18px;color:var(--text)}.bar-label{font-size:12px;color:var(--muted)}.gap-arrow{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);color:var(--red);font-size:12px;letter-spacing:.05em;white-space:nowrap}.gap-arrow:after{content:"";position:absolute;left:50%;top:18px;width:88px;height:1px;background:var(--red);transform:translateX(-50%)}.trend-card{padding:24px}.trend-card svg{width:100%;height:auto}.trend-line{fill:none;stroke:var(--cyan);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:500;stroke-dashoffset:500;transition:stroke-dashoffset 1.2s .2s}.section.active .trend-line{stroke-dashoffset:0}.trend-dot{fill:var(--cyan);stroke:#0b1018;stroke-width:3}.trend-dot.last{fill:var(--red);filter:drop-shadow(0 0 8px rgba(255,107,107,.8))}.axis-label{fill:var(--muted);font-size:11px}.ratio{margin-top:22px;padding:14px 16px;border-radius:16px;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.25);display:flex;align-items:center;gap:12px}.ratio strong{font-size:34px;color:var(--red);letter-spacing:-.06em}
+/* online bars */
+.online-panel{padding:24px}.online-group{margin-top:18px}.online-group h3{font-size:16px;color:var(--muted);margin-bottom:14px}.online-row{display:grid;grid-template-columns:120px 1fr 64px;gap:12px;align-items:center;margin:13px 0;font-size:13px}.online-track{height:16px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}.online-fill{height:100%;width:var(--w);transform:scaleX(0);transform-origin:left;border-radius:inherit;background:linear-gradient(90deg,var(--orange),#e87d3c);transition:transform 1s .2s}.online-fill.gray{background:linear-gradient(90deg,#658099,#3a526e)}.section.active .online-fill{transform:scaleX(1)}.online-value{text-align:right;font-family:var(--mono);color:#e9eef5}.method-strip{margin-top:26px;padding:12px 14px;border-radius:13px;background:rgba(116,241,208,.06);border:1px solid rgba(116,241,208,.18);color:#bbd0cf;font-size:12px}
+/* layers */
+.layers{display:grid;gap:13px;max-width:860px;margin:0 auto}.layer{position:relative;padding:24px 28px 24px 86px;border-radius:20px;border:1px solid var(--line);background:rgba(20,28,40,.8);overflow:hidden;transition:.3s;cursor:pointer}.layer:hover,.layer.open{transform:translateX(6px);border-color:rgba(116,241,208,.45)}.layer-num{position:absolute;left:24px;top:22px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:700;background:rgba(255,255,255,.08);color:var(--muted)}.layer h3{font-size:20px;margin-bottom:6px}.layer p{font-size:14px;color:#c7ced9;max-height:0;overflow:hidden;transition:max-height .45s ease,margin .45s ease}.layer.open p{max-height:80px;margin-top:8px}.layer.employment{border-left:4px solid var(--blue)}.layer.family{border-left:4px solid var(--orange)}.layer.housing{border-left:4px solid var(--red)}.layer-arrow{height:28px;display:flex;justify-content:center;align-items:center;color:var(--dim);font-size:18px}.layer-result{margin:22px auto 0;max-width:860px;padding:22px;border-radius:20px;text-align:center;background:linear-gradient(135deg,rgba(116,241,208,.15),rgba(255,179,90,.1));border:1px solid rgba(116,241,208,.35);font-size:clamp(20px,3vw,34px);font-weight:800;letter-spacing:-.04em}.layer-result small{display:block;margin-top:8px;color:var(--muted);font-size:12px;font-weight:400;letter-spacing:0}
+/* parent cost */
+.cost-layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px}.cost-card{padding:24px}.cost-pair{display:flex;align-items:stretch;gap:12px;margin:22px 0}.cost-num{flex:1;padding:20px 18px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--line)}.cost-num strong{display:block;font-size:clamp(40px,5.5vw,76px);letter-spacing:-.1em;line-height:.92}.cost-num small{display:block;color:var(--muted);font-size:12px;margin-top:10px}.cost-mult{align-self:center;font-family:var(--mono);font-size:23px;color:var(--red);white-space:nowrap}.case{padding:24px;border-radius:20px;background:linear-gradient(145deg,rgba(111,41,48,.55),rgba(42,20,27,.75));border:1px solid rgba(255,107,107,.25);font-size:16px;line-height:1.8;color:#f0d9da;position:relative}.case:before{content:"“";position:absolute;left:18px;top:-8px;font-size:86px;color:rgba(255,107,107,.26);font-family:Georgia,serif}.case p{position:relative}.case cite{display:block;margin-top:16px;color:#d79da2;font-size:12px;font-style:normal}.home-bar{margin-top:22px}.stacked{height:44px;border-radius:14px;overflow:hidden;display:flex;background:rgba(255,255,255,.08);margin:14px 0 8px}.stacked .parents{width:68%;background:linear-gradient(90deg,var(--orange),#e78039);display:flex;align-items:center;padding-left:16px;color:#27180d;font-weight:800}.stacked .others{width:32%;display:flex;align-items:center;padding-left:12px;color:#abb5c2;font-size:12px}.substack{height:8px;width:35%;background:var(--red);border-radius:999px}.bar-legend{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.bar-legend strong{color:var(--orange)}
+/* timeline */
+.timeline-wrap{padding:30px 12px 12px}.timeline{position:relative;padding:72px 0 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.timeline:before{content:"";position:absolute;left:4%;right:4%;top:83px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--orange),var(--red));transform:scaleX(0);transform-origin:left;transition:transform 1.4s .2s}.section.active .timeline:before{transform:scaleX(1)}.time-node{position:relative;z-index:1;text-align:center;cursor:pointer}.time-dot{width:24px;height:24px;margin:0 auto 18px;border-radius:50%;border:4px solid #0e151f;background:var(--cyan);box-shadow:0 0 0 2px var(--cyan),0 0 20px rgba(116,241,208,.5);transition:.25s}.time-node:nth-child(2) .time-dot{background:var(--orange);box-shadow:0 0 0 2px var(--orange),0 0 20px rgba(255,179,90,.45)}.time-node:nth-child(3) .time-dot{background:#df8a71;box-shadow:0 0 0 2px #df8a71,0 0 20px rgba(223,138,113,.45)}.time-node:nth-child(4) .time-dot{background:var(--red);box-shadow:0 0 0 2px var(--red),0 0 20px rgba(255,107,107,.6)}.time-node.active .time-dot,.time-node:hover .time-dot{transform:scale(1.28)}.time-node h3{font-size:15px;color:var(--text);margin-bottom:8px}.time-node p{font-size:13px;color:var(--muted);max-width:220px;margin:0 auto}.timeline-detail{max-width:780px;margin:10px auto 0;min-height:84px;padding:18px 20px;border-radius:18px;background:rgba(20,28,40,.8);border:1px solid var(--line);color:#d7dee6;font-size:15px;text-align:center}.closing{max-width:860px;margin:34px auto 0;text-align:center;font-size:clamp(21px,3vw,35px);line-height:1.4;letter-spacing:-.04em;color:#f5ebe1}.closing em{font-style:normal;color:var(--orange)}
+/* sources */
+.sources-wrap{max-width:900px;margin:0 auto}.source-table{width:100%;border-collapse:collapse;font-size:13px;background:rgba(17,24,34,.8);border-radius:20px;overflow:hidden;border:1px solid var(--line)}.source-table th,.source-table td{padding:16px 18px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top}.source-table th{color:var(--cyan);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(116,241,208,.04)}.source-table td{color:#d2d9e2}.source-table tr:last-child td{border-bottom:0}.method-accordion{margin-top:18px}.method-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:rgba(20,28,40,.78);padding:16px 18px;border-radius:15px;cursor:pointer;color:#d9e1e9;text-align:left;min-height:48px}.method-toggle span:last-child{color:var(--cyan);font-family:var(--mono)}.method-body{max-height:0;overflow:hidden;transition:max-height .45s ease;background:rgba(20,28,40,.48);border-radius:0 0 15px 15px}.method-body p{padding:0 18px 18px;color:var(--muted);font-size:13px}.method-accordion.open .method-body{max-height:250px}.footer-note{margin-top:36px;color:var(--dim);font-size:11px;line-height:1.8}
+/* utilities */
+.center{text-align:center}.mt-22{margin-top:22px}.mt-30{margin-top:30px}.flex-between{display:flex;justify-content:space-between;align-items:center;gap:16px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (max-width:860px){
+  .topbar{padding:0 16px;height:58px}.brand span{display:none}.topbar-meta{display:none}.side-nav{right:9px;gap:6px}.side-nav button{width:24px;height:24px}.section{padding:92px 22px 60px}.section-head{align-items:flex-start;flex-direction:column;gap:14px;margin-bottom:25px}.section-head .page-no{order:-1}.hero{padding-bottom:58px}.hero:after{background:linear-gradient(90deg,rgba(9,12,18,.98) 0%,rgba(9,12,18,.72) 65%,rgba(9,12,18,.3) 100%)}.phone{right:4vw;opacity:.56;transform:rotate(-8deg) scale(.86)}.hero-copy{position:relative;z-index:2}.scroll-hint{right:22px;bottom:18px}.bill-layout,.donut-layout,.scatter-layout,.jobs-layout,.cost-layout{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}.quote-row{grid-template-columns:1fr}.data-cards{margin-top:8px}.donut-wrap{min-height:320px}.sankey-shell{padding:12px 5px}.sankey-shell svg{min-height:360px}.timeline{grid-template-columns:1fr;gap:18px;padding:0 0 0 54px}.timeline:before{left:20px;right:auto;top:18px;bottom:18px;width:3px;height:auto;background:linear-gradient(180deg,var(--cyan),var(--orange),var(--red));transform:scaleY(0);transform-origin:top}.section.active .timeline:before{transform:scaleY(1)}.time-node{text-align:left;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}.time-dot{grid-row:span 2;margin:0}.time-node p{margin:0;max-width:none}.timeline-detail{text-align:left;margin-top:20px}.closing{text-align:left}.online-row{grid-template-columns:100px 1fr 56px;gap:8px}.source-table{font-size:12px}.source-table th,.source-table td{padding:12px 10px}.source-table th:nth-child(3),.source-table td:nth-child(3){display:none}
+}
+@media (max-width:520px){
+  h2{font-size:38px}.lede{font-size:16px}.hero-title{gap:11px}.hero-title .unit{font-size:37px}.hero-title .year{font-size:10px}.big-number{font-size:78px}.ledger{padding:22px 20px}.ledger-row{font-size:16px}.ledger-total{font-size:20px}.ledger-total strong{font-size:25px}.flow-label{font-size:10px}.flow-small{font-size:9px}.jobs-card,.trend-card,.online-panel,.cost-card{padding:18px}.bars{gap:24px}.bar{width:76px}.online-row{grid-template-columns:88px 1fr 53px;font-size:12px}.layer{padding-left:72px}.layer-num{left:18px}.phone{right:-12vw;opacity:.42}.side-nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.meter i,.bar,.online-fill,.trend-line,.timeline:before{transition:none;transform:none;stroke-dashoffset:0}.section.active .meter i,.section.active .bar,.section.active .online-fill{transform:none}.flow,.bubble,.data-card{transition:none}}
+</style>
+</head>
+<body>
+<header class="topbar" aria-label="阅读进度">
+  <div class="brand"><span class="brand-mark">2858</span><span>SCROLL STORY / 2026</span></div>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="topbar-meta"><span class="meta-dot"></span><span id="progressText">1 / 12</span></div>
+</header>
+<nav class="side-nav" aria-label="页面导航">
+  <button class="active" data-go="s1" aria-label="第1页 封面"></button><button data-go="s2" aria-label="第2页 年度账单"></button><button data-go="s3" aria-label="第3页 群体规模"></button><button data-go="s4" aria-label="第4页 概念辨析"></button><button data-go="s5" aria-label="第5页 时间画像"></button><button data-go="s6" aria-label="第6页 地域画像"></button><button data-go="s7" aria-label="第7页 就业压力"></button><button data-go="s8" aria-label="第8页 时间数据"></button><button data-go="s9" aria-label="第9页 结构推力"></button><button data-go="s10" aria-label="第10页 父母代价"></button><button data-go="s11" aria-label="第11页 长远预警"></button><button data-go="s12" aria-label="第12页 来源说明"></button>
+</nav>
+<main>
+  <section class="section hero active" id="s1" data-index="1">
+    <div class="hero-visual" aria-hidden="true"><div class="phone"></div></div>
+    <div class="section-inner hero-copy">
+      <div class="eyebrow reveal">DATA STORY / 01</div>
+      <div class="hero-title reveal delay-1"><span class="big-number number-accent" data-count="2858">0</span><span class="unit">元活一年</span><span class="year">A hidden bill</span></div>
+      <div class="hero-subtitle reveal delay-2">1000万“不伸手”青年的隐性账单</div>
+      <p class="hero-lede reveal delay-3">他们不工作，不伸手要钱，一年只花2858元。看起来独立又懂事。但这份“懂事”的背后，是每年至少1.2万元的隐性开销，压在另一群人肩上。</p>
+      <div class="hero-foot reveal delay-4"><button class="btn" data-go="s2">从一张账单开始 <span aria-hidden="true">↘</span></button><span class="source">数据来源：中国社科院2026年青年监测报告</span></div>
+    </div>
+    <div class="scroll-hint">向下滚动</div>
+  </section>
+
+  <section class="section" id="s2" data-index="2">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">02 / 一个具体的人</div><h2>她的2025年，<br><span class="number-accent">总共花了2858元</span></h2></div><div class="page-no">01 — 12</div></div>
+      <div class="bill-layout">
+        <div class="ledger reveal delay-1" aria-label="手写风格年度账单">
+          <div class="ledger-title">2025 · 我的年度账单</div>
+          <div class="ledger-row"><span>电话费</span><span>¥ 38</span></div><div class="ledger-row"><span>零食</span><span>¥ 120</span></div><div class="ledger-row"><span>网盘会员</span><span>¥ 68</span></div><div class="ledger-row"><span>交通 / 快递</span><span>¥ 236</span></div><div class="ledger-row"><span>偶尔买书</span><span>¥ 184</span></div><div class="ledger-row"><span>其他小额支出</span><span>¥ 2,212</span></div>
+          <div class="ledger-total"><span>全年合计</span><strong data-count="2858">0</strong></div>
+        </div>
+        <div class="comment-panel card reveal delay-2">
+          <div><span class="tag">云南 · 24岁 · 线上散活</span><p class="lede mt-22">没有房租，没有水电，没有新衣服，没有社交聚餐。摊到每一天，不到8块钱。她住父母的老房子，三餐跟着父母吃。</p><div class="comment-tabs" role="tablist"><button class="active" data-comment="a" role="tab">“活明白了”</button><button data-comment="b" role="tab">“转嫁压力”</button></div><div class="comment-quote" id="commentQuote">“我不花父母的钱，我自给自足。”</div></div>
+          <div class="micro-stat"><div><strong>不到8元</strong>每天</div><div><strong>200–300元</strong>偶尔零花</div></div>
+        </div>
+      </div>
+      <p class="lede reveal delay-3 mt-30"><b>评论区吵成了两半。</b>有人说她“活明白了”，有人说她“把压力转嫁给了父母”。</p>
+    </div>
+  </section>
+
+  <section class="section" id="s3" data-index="3">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">03 / 从个案到全貌</div><h2>这不是个例。<br>全国有<span class="number-accent">1000万+</span></h2></div><div class="page-no">02 — 12</div></div>
+      <div class="donut-layout">
+        <div class="reveal delay-1"><div class="donut-wrap"><svg viewBox="0 0 420 420" role="img" aria-label="18至35岁青年中11.6%处于隐性依赖状态"><circle cx="210" cy="210" r="142" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="28"/><circle id="donutArc" cx="210" cy="210" r="142" fill="none" stroke="var(--cyan)" stroke-width="28" stroke-linecap="round" stroke-dasharray="103 790" stroke-dashoffset="0" transform="rotate(-90 210 210)" style="filter:drop-shadow(0 0 10px rgba(116,241,208,.45));transition:stroke-dasharray 1.2s ease"/><circle cx="210" cy="210" r="108" fill="rgba(13,19,28,.9)"/></svg><div class="donut-center"><strong data-count="1000">0</strong><span>万+ 青年</span></div></div><div class="donut-legend"><span><i class="legend-dot" style="background:var(--cyan)"></i>隐性依赖 11.6%</span><span><i class="legend-dot" style="background:#344151"></i>其他青年 88.4%</span></div></div>
+        <div class="reveal delay-2"><p class="lede">18–35岁青年中，<b>11.6%</b>正处于“不工作、不主动要钱、低欲望宅家”状态。差不多每八个年轻人里，就有一个。</p><div class="data-cards mt-30"><div class="data-card"><strong>71.3%</strong><span>30岁以下城镇青年长期接受父母经济或劳务支持</span><div class="meter"><i style="--w:71.3%"></i></div></div><div class="data-card"><strong>~80%</strong><span>25–35岁隐性依赖比例（口径见方法说明）</span><div class="meter"><i style="--w:80%"></i></div></div></div><div class="source mt-22">中国社科院 · 2026年4月青年监测报告</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="s4" data-index="4">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">04 / 概念辨析</div><h2>不伸手，<br><span class="number-orange">就是独立吗？</span></h2></div><div class="page-no">03 — 12</div></div>
+      <p class="lede reveal delay-1">传统啃老的关键词是“伸手”，新型啃老的关键词是“不伸手”。年轻人只付了塔尖的那一点零花，塔基是父母的房子和厨房。</p>
+      <div class="compare-grid mt-30 reveal delay-2"><div class="compare-col trad"><h3>传统啃老</h3><div class="compare-row"><b>01</b><span>主动伸手要钱</span></div><div class="compare-row"><b>02</b><span>父母能看见钱的流向</span></div><div class="compare-row"><b>03</b><span>父母可以判断、拒绝</span></div><div class="compare-row"><b>标签</b><span>懒惰、没出息</span></div></div><div class="compare-col new"><h3>新型啃老</h3><div class="compare-row"><b>01</b><span>不主动要钱</span></div><div class="compare-row"><b>02</b><span>父母默默支付隐性开销</span></div><div class="compare-row"><b>03</b><span>父母“不好意思赶走孩子”</span></div><div class="compare-row"><b>标签</b><span>懂事、节俭、独立</span></div></div></div>
+      <div class="iceberg reveal delay-3"><button class="btn ice-trigger" id="iceTrigger">看见水面下</button><div class="waterline">水面</div><div class="ice-top">2858元<br>个人零花</div><div class="ice-bottom">至少1.2万元<br>隐性生活成本<br><small>房子 · 厨房 · 水电 · 三餐</small></div><div class="ice-note">近七成选择这条路的年轻人，都住在父母家里</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="s5" data-index="5">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">05 / 时间画像</div><h2>一个“隐性啃老”青年的<span class="number-accent">24小时</span></h2></div><div class="page-no">04 — 12</div></div>
+      <p class="lede reveal delay-1">63%的该群体日均上网超过8小时，45%的时间花在短视频、游戏和直播打赏上。</p>
+      <div class="sankey-shell card reveal delay-2 mt-30"><svg viewBox="0 0 1040 390" role="img" aria-label="24小时生活时间流向示意图">
+        <defs><linearGradient id="flowBlue" x1="0" x2="1"><stop offset="0" stop-color="#385c9c" stop-opacity=".9"/><stop offset="1" stop-color="#19325f" stop-opacity=".52"/></linearGradient><linearGradient id="flowCyan" x1="0" x2="1"><stop offset="0" stop-color="#74f1d0" stop-opacity=".8"/><stop offset="1" stop-color="#228f85" stop-opacity=".36"/></linearGradient><linearGradient id="flowGray" x1="0" x2="1"><stop offset="0" stop-color="#8c98a8" stop-opacity=".45"/><stop offset="1" stop-color="#515b6b" stop-opacity=".18"/></linearGradient></defs>
+        <path class="flow" data-flow="sleep" d="M92 104 C200 104 210 86 305 86 L305 188 C210 188 200 170 92 170 Z" fill="url(#flowBlue)"/><path class="flow" data-flow="screen" d="M92 174 C210 174 220 205 305 205 L305 278 C220 278 204 210 92 210 Z" fill="url(#flowCyan)"/><path class="flow" data-flow="out" d="M92 214 C205 214 215 292 305 292 L305 316 C214 316 204 230 92 230 Z" fill="#bf7a53" opacity=".6"/><path class="flow" data-flow="food" d="M92 234 C206 234 220 328 305 328 L305 342 C214 342 204 246 92 246 Z" fill="#d0aa66" opacity=".6"/><path class="flow" data-flow="gig" d="M92 250 C212 250 230 354 305 354 L305 362 C220 362 208 258 92 258 Z" fill="#8d83cf" opacity=".55"/><path class="flow" data-flow="parents" d="M92 262 C212 262 238 372 305 372 L305 374 C228 374 210 270 92 270 Z" fill="url(#flowGray)"/>
+        <path class="flow" data-flow="sleep" d="M305 86 C440 86 458 88 570 88 L570 188 C458 188 440 188 305 188 Z" fill="url(#flowBlue)"/><path class="flow" data-flow="screen" d="M305 205 C440 205 458 204 570 204 L570 278 C458 278 440 278 305 278 Z" fill="url(#flowCyan)"/><path class="flow" data-flow="out" d="M305 292 C450 292 462 296 570 296 L570 316 C462 316 450 316 305 316 Z" fill="#bf7a53" opacity=".6"/><path class="flow" data-flow="food" d="M305 328 C450 328 466 328 570 328 L570 342 C466 342 450 342 305 342 Z" fill="#d0aa66" opacity=".6"/><path class="flow" data-flow="gig" d="M305 354 C455 354 470 354 570 354 L570 362 C470 362 455 362 305 362 Z" fill="#8d83cf" opacity=".55"/><path class="flow" data-flow="parents" d="M305 372 C454 372 470 372 570 372 L570 374 C470 374 454 374 305 374 Z" fill="url(#flowGray)"/>
+        <path class="flow" data-flow="sleep" d="M570 88 C710 88 738 90 872 90 L872 188 C738 188 710 188 570 188 Z" fill="url(#flowBlue)"/><path class="flow" data-flow="screen" d="M570 204 C710 204 738 206 872 206 L872 278 C738 278 710 278 570 278 Z" fill="url(#flowCyan)"/><path class="flow" data-flow="out" d="M570 296 C710 296 738 298 872 298 L872 316 C738 316 710 316 570 316 Z" fill="#bf7a53" opacity=".6"/><path class="flow" data-flow="food" d="M570 328 C710 328 738 328 872 328 L872 342 C738 342 710 342 570 342 Z" fill="#d0aa66" opacity=".6"/><path class="flow" data-flow="gig" d="M570 354 C710 354 738 354 872 354 L872 362 C738 362 710 362 570 362 Z" fill="#8d83cf" opacity=".55"/><path class="flow" data-flow="parents" d="M570 372 C710 372 738 372 872 372 L872 374 C738 374 710 374 570 374 Z" fill="url(#flowGray)"/>
+        <g fill="#dbe5ef"><text x="24" y="74" class="flow-label">24小时</text><text x="24" y="95" class="flow-small">时间流入</text><text x="318" y="62" class="flow-small">生活场景</text><text x="887" y="66" class="flow-small">出口</text></g>
+        <g class="flow-label"><text x="320" y="118">睡眠与卧床</text><text x="320" y="137" class="flow-small">10–12h</text><text x="320" y="224">短视频 / 游戏 / 直播</text><text x="320" y="243" class="flow-small">6–8h</text><text x="320" y="305">外出 / 闲逛</text><text x="320" y="337">进食</text><text x="320" y="360">线上散活</text><text x="320" y="379" fill="#ff6b6b">与父母互动 ≈ 0</text></g>
+        <g class="flow-label"><text x="887" y="118">卧室 / 个人空间</text><text x="887" y="225">6寸屏幕</text><text x="887" y="307">公园 / 快餐店</text><text x="887" y="337">厨房</text><text x="887" y="360">零工收入</text><text x="887" y="379" fill="#ff6b6b">家庭隐性支持 →</text></g>
+        <path d="M874 371 l12 4 -12 4" stroke="#ff6b6b" fill="none" stroke-width="2"/>
+      </svg><div class="sankey-caption"><span>点击流带，查看对应出口</span><span class="tag warn">区间示意 · 各项不做加总</span></div></div>
+      <div class="quote-row reveal delay-3"><div class="quote"><b>24岁 · 曼曼</b>“一天绝大多数时间躺在床上刷短视频，因为最省钱。”</div><div class="quote"><b>26岁 · 小P</b>“每天早上八点背着包出门，傍晚五六点回家，假装还在上班。”</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="s6" data-index="6">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">06 / 地域画像</div><h2>越租不起房的地方，<br><span class="number-orange">越容易“宅”回家</span></h2></div><div class="page-no">05 — 12</div></div>
+      <div class="scatter-layout"><div class="scatter-card card reveal delay-1"><svg viewBox="0 0 720 430" role="img" aria-label="城市租金收入比与结构压力代理指数气泡示意图"><g><line class="axis" x1="68" y1="370" x2="690" y2="370"/><line class="axis" x1="68" y1="36" x2="68" y2="370"/><line class="gridline" x1="68" y1="286" x2="690" y2="286"/><line class="gridline" x1="68" y1="202" x2="690" y2="202"/><line class="gridline" x1="68" y1="119" x2="690" y2="119"/><path class="trend" d="M102 328 C250 292 390 215 650 80"/><text x="504" y="94" fill="#ffb35a" font-size="12">租金越重，依赖越深（结构趋势）</text><text x="340" y="411" fill="#98a5b5" font-size="12">城市租金收入比（%）</text><text x="18" y="228" transform="rotate(-90 18 228)" fill="#98a5b5" font-size="12">结构压力代理指数（示意）</text><text x="62" y="389" fill="#6d7887" font-size="11">18</text><text x="218" y="389" fill="#6d7887" font-size="11">22</text><text x="374" y="389" fill="#6d7887" font-size="11">26</text><text x="530" y="389" fill="#6d7887" font-size="11">30</text><text x="674" y="389" fill="#6d7887" font-size="11">34</text>
+        <circle class="bubble" data-city="北京" data-rent="24.1" data-child="57.5" data-unemp="17.9" data-pressure="68" cx="380" cy="206" r="24" fill="#ff9869"/><circle class="bubble" data-city="上海" data-rent="24.1" data-child="64.4" data-unemp="17.9" data-pressure="74" cx="380" cy="156" r="28" fill="#ff6b6b"/><circle class="bubble" data-city="广州" data-rent="30.0" data-child="42.7" data-unemp="17.9" data-pressure="84" cx="610" cy="112" r="22" fill="#f24f58"/><circle class="bubble" data-city="深圳" data-rent="31.0" data-child="37.4" data-unemp="17.9" data-pressure="90" cx="650" cy="82" r="20" fill="#d63d66"/><circle class="bubble" data-city="天津" data-rent="22.8" data-child="54.0" data-unemp="7.2" data-pressure="55" cx="270" cy="268" r="23" fill="#8d8cf0"/><circle class="bubble" data-city="珠海" data-rent="30.4" data-child="40.2" data-unemp="7.2" data-pressure="78" cx="627" cy="135" r="18" fill="#c25cd2"/><circle class="bubble" data-city="浙江" data-rent="21.8" data-child="37.4" data-unemp="7.2" data-pressure="48" cx="232" cy="302" r="19" fill="#6d9de9"/>
+      </g></svg><div class="source">点大小 = 独生子女比例 · 颜色 = 失业率 · 点击气泡查看城市口径</div></div>
+        <aside class="chart-note reveal delay-2"><strong>先说清楚数据边界</strong><p>公开资料没有给出“城市租金收入比 × 城市青年隐性依赖率”的完整配对表。本图的纵轴因此使用由租金、失业率和独生子女比例推导的<strong>结构压力代理指数</strong>，用于说明机制，不代表官方依赖率。</p><ul class="mini-list"><li><span>一线城市租客平均租金收入比</span><b>24.1%</b></li><li><span>珠海、广州租金收入比</span><b>≥30%</b></li><li><span>上海独生子女比例</span><b>64.4%</b></li><li><span>16–24岁失业率</span><b>17.9%</b></li></ul><div class="tag warn mt-22">示意图 · 待补充城市级配对数据</div></aside></div>
+    </div>
+  </section>
+
+  <section class="section" id="s7" data-index="7">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">07 / 就业结构的压力</div><h2><span class="number-orange">1270万</span>毕业生，<br><span class="number-accent">567万</span>岗位</h2></div><div class="page-no">06 — 12</div></div>
+      <p class="lede reveal delay-1">竞争比约2.3:1。16–24岁失业率在2026年7月跳升至17.9%，创11个月新高。</p>
+      <div class="jobs-layout mt-30"><div class="jobs-card card reveal delay-2"><div class="flex-between"><span class="tag">供需对比</span><span class="source">人数 · 万</span></div><div class="bars"><div class="bar-col"><div class="bar-val">1270</div><div class="bar grad" style="--h:94%"></div><div class="bar-label">2026届毕业生</div></div><div class="bar-col"><div class="bar-val">567</div><div class="bar gray" style="--h:42%"></div><div class="bar-label">有效岗位</div></div><div class="gap-arrow">缺口 703 万</div></div><div class="ratio"><strong>2.3:1</strong><span>平均约 2.24 个毕业生竞争 1 个有效岗位</span></div></div>
+        <div class="trend-card card reveal delay-3"><div class="flex-between"><span class="tag">16–24岁失业率</span><span class="source">2026 · 月度</span></div><svg viewBox="0 0 560 300" role="img" aria-label="2026年1月至7月16至24岁失业率趋势"><line class="axis" x1="48" y1="242" x2="530" y2="242"/><line class="gridline" x1="48" y1="182" x2="530" y2="182"/><line class="gridline" x1="48" y1="122" x2="530" y2="122"/><line class="gridline" x1="48" y1="62" x2="530" y2="62"/><polyline class="trend-line" points="58,128 138,112 218,155 298,142 378,167 458,184 520,76"/><g class="axis-label"><text x="50" y="265">1月</text><text x="130" y="265">3月</text><text x="210" y="265">4月</text><text x="290" y="265">5月</text><text x="370" y="265">6月</text><text x="450" y="265">7月</text><text x="512" y="265">8月</text><text x="10" y="66">18%</text><text x="10" y="186">14%</text></g><g><circle class="trend-dot" cx="58" cy="128" r="5"/><circle class="trend-dot" cx="138" cy="112" r="5"/><circle class="trend-dot" cx="218" cy="155" r="5"/><circle class="trend-dot" cx="298" cy="142" r="5"/><circle class="trend-dot" cx="378" cy="167" r="5"/><circle class="trend-dot" cx="458" cy="184" r="5"/><circle class="trend-dot last" cx="520" cy="76" r="8"/></g><text x="470" y="53" fill="#ff6b6b" font-size="12">17.9%</text></svg><div class="source">数据点：1月16.3% · 3月16.9% · 6月14.9% · 7月17.9%</div></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="s8" data-index="8">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">08 / 时间数据</div><h2>一天<span class="number-accent">7小时13分钟</span>，<br>他们在刷什么？</h2></div><div class="page-no">07 — 12</div></div>
+      <p class="lede reveal delay-1">18–59岁中青年日均上网7小时13分钟，互联网使用参与率92.9%。短视频、网络视听、即时通讯吞噬了大部分在线时间。</p>
+      <div class="online-panel card reveal delay-2 mt-30"><div class="flex-between"><span class="tag">全国平均 · 2024</span><span class="tag warn">不同口径 · 不可相加</span></div><div class="online-group"><h3>在线活动（单项时长）</h3><div class="online-row"><span>网络视听总使用</span><div class="online-track"><i class="online-fill" style="--w:78%"></i></div><b class="online-value">201 min</b></div><div class="online-row"><span>短视频 / 微短剧</span><div class="online-track"><i class="online-fill" style="--w:50%"></i></div><b class="online-value">129 min</b></div><div class="online-row"><span>游戏 / 学习 / 办公</span><div class="online-track"><i class="online-fill gray" style="--w:50%"></i></div><b class="online-value">≈130 min</b></div><div class="online-row"><span>即时通讯（约20%）</span><div class="online-track"><i class="online-fill gray" style="--w:33%"></i></div><b class="online-value">≈86 min</b></div></div><div class="online-group"><h3>一天的时间参照</h3><div class="online-row"><span>18–59岁上网</span><div class="online-track"><i class="online-fill" style="--w:100%"></i></div><b class="online-value">433 min</b></div><div class="online-row"><span>通勤</span><div class="online-track"><i class="online-fill gray" style="--w:15%"></i></div><b class="online-value">66 min</b></div><div class="online-row"><span>无酬劳动</span><div class="online-track"><i class="online-fill gray" style="--w:37%"></i></div><b class="online-value">162 min</b></div></div><div class="method-strip">当全国平均是7小时，隐性啃老群体的8小时+意味着什么？这些数字来自不同调查口径，条形用于比较数量级，不代表一个人可以把所有分钟同时花掉。</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="s9" data-index="9">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">09 / 从品行到结构</div><h2>这不是一张品行地图，<br>这是<span class="number-orange">一张压力地图</span></h2></div><div class="page-no">08 — 12</div></div>
+      <p class="lede reveal delay-1">“新型啃老”的分布，更像一张结构压力地图。就业、家庭结构、住房成本，三股推力最后都指向同一个缓冲垫。</p>
+      <div class="layers mt-30"><div class="layer employment open reveal delay-2" data-layer="0"><span class="layer-num">01</span><h3>就业压力 · 1270万 vs 567万</h3><p>毕业生多、岗位少，16–24岁失业率17.9%。当市场没有入口，家庭就成了第一道缓冲。</p></div><div class="layer-arrow">↓</div><div class="layer family reveal delay-3" data-layer="1"><span class="layer-num">02</span><h3>独生子女家庭 · 64.4% / 57.5% / 54.0%</h3><p>上一代积累了资产，下一代更容易成为家庭资源的唯一承接点。</p></div><div class="layer-arrow">↓</div><div class="layer housing reveal delay-4" data-layer="2"><span class="layer-num">03</span><h3>住房成本 · 一线租金收入比24.1%</h3><p>工作意味着把将近三分之一收入交给房东，留在家里则房租归零。</p></div></div><div class="layer-result reveal delay-4">家庭成为最后的托底<small>代际对冲 · 把市场压力翻译成家庭内部的资源转移</small></div>
+    </div>
+  </section>
+
+  <section class="section" id="s10" data-index="10">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">10 / 父母端的账</div><h2>那本<span class="number-orange">没有写出来的账</span></h2></div><div class="page-no">09 — 12</div></div>
+      <p class="lede reveal delay-1">养老金没少，存折没动，可身体却一天天垮了。新型啃老，啃的不是钱，是父母后半生的健康。</p>
+      <div class="cost-layout mt-30"><div class="cost-card card reveal delay-2"><span class="tag">年度隐性成本</span><div class="cost-pair"><div class="cost-num"><strong class="number-accent">2858</strong><small>年轻人年度零花</small></div><div class="cost-mult">×4.2</div><div class="cost-num"><strong class="number-orange">12000</strong><small>三四线城市隐性生活成本</small></div></div><div class="source">房屋、三餐、水电、照料与劳务，没有写进年轻人的“年度账单”。</div><div class="home-bar"><div class="flex-between"><span class="tag">一线城市买房首付来源</span><span class="source">公开报道汇总</span></div><div class="stacked"><div class="parents">68% 父母出</div><div class="others">32% 其他</div></div><div class="bar-legend"><span><strong>35%</strong> 家庭由父母直接扛下整个首付</span><span>分母：购房家庭</span></div><div class="substack mt-22"></div></div></div>
+        <div class="case reveal delay-3"><p>58岁李阿姨，退休三年，每天从早六点到晚十点带孙子。儿子儿媳下班回家往沙发一躺，手机刷得入神。偶尔一句“妈，辛苦了”，手上什么也不干。腰椎间盘突出复发，想开口让儿子周末自己带两天，话到嘴边又咽了回去。</p><cite>公开报道案例 · 细节做了隐私化处理</cite></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="s11" data-index="11">
+    <div class="section-inner">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">11 / 长远预警</div><h2>当父母老去的<span class="number-orange">那一天</span></h2></div><div class="page-no">10 — 12</div></div>
+      <div class="timeline-wrap card reveal delay-1 mt-30"><div class="timeline" role="list"><div class="time-node active" data-time="0" role="listitem"><div class="time-dot"></div><div><h3>现在</h3><p>父母退休金兜底，隐性依赖持续</p></div></div><div class="time-node" data-time="1" role="listitem"><div class="time-dot"></div><div><h3>5–10年后</h3><p>父母退休金不够用，年轻人30–40岁</p></div></div><div class="time-node" data-time="2" role="listitem"><div class="time-dot"></div><div><h3>问题</h3><p>多年无正式工作履历，技能断层</p></div></div><div class="time-node" data-time="3" role="listitem"><div class="time-dot"></div><div><h3>后果</h3><p>同时失去家庭托底和市场接纳</p></div></div></div><div class="timeline-detail" id="timelineDetail">家庭还能把压力挡在门内，但这不是永久的平衡。</div></div><p class="closing reveal delay-2">真正的“新型啃老”不是那2858元的个人账单，是那本没有写出来的账：<em>一年至少一万二的隐性成本</em>，和一段正在被屏幕一点一点吞掉的人生时间。</p>
+    </div>
+  </section>
+
+  <section class="section" id="s12" data-index="12">
+    <div class="section-inner sources-wrap">
+      <div class="section-head reveal"><div class="title-wrap"><div class="eyebrow">12 / 可查证性</div><h2>数据来源<br><span class="number-accent">与方法说明</span></h2></div><div class="page-no">11 — 12</div></div>
+      <p class="lede reveal delay-1">本长图数据来自公开来源。隐性依赖率等推算数据，基于社科院监测报告与统计局公开数据的交叉分析。</p>
+      <div class="reveal delay-2 mt-30"><table class="source-table"><thead><tr><th>数据类别</th><th>来源</th><th>时间</th></tr></thead><tbody><tr><td>青年监测核心数据（11.6%、1000万、71.3%、80%）</td><td>中国社科院青年监测报告</td><td>2026年4月</td></tr><tr><td>分年龄组失业率</td><td>国家统计局</td><td>2026年1–8月</td></tr><tr><td>高校毕业生与岗位数据</td><td>教育部 / 人社部</td><td>2026年</td></tr><tr><td>独生子女比例（分省）</td><td>各省统计年鉴</td><td>2025年</td></tr><tr><td>租金收入比 / 租金收益率</td><td>贝壳研究院</td><td>2026年7月</td></tr><tr><td>时间利用数据</td><td>国家统计局第三次全国时间利用调查</td><td>2024年</td></tr><tr><td>隐性依赖个案</td><td>公开媒体报道</td><td>2026年</td></tr></tbody></table></div>
+      <div class="method-accordion reveal delay-3"><button class="method-toggle" id="methodToggle"><span>打开方法注释与数据字典</span><span>＋</span></button><div class="method-body"><p>1）第6页纵轴为结构压力代理指数，不等同于城市级隐性依赖率；原始公开材料缺少完整的城市配对数据。2）第5页为区间示意，睡眠、屏幕等时长不做加总。3）第8页把网络视听、短视频、即时通讯等不同口径并列展示，用于比较数量级。4）第10页“35%”是“父母直接扛下整个首付”的家庭子集，不是68%的简单相加。建议发布时同步附上原始报告链接、样本范围与调查问卷。</p></div></div>
+      <div class="footer-note reveal delay-4">本页面是一份可交互的编辑设计稿。图表中的示意、推导与公开统计已通过标签区分，正式发布前请由编辑团队逐项核对原始报告、样本口径与时间范围。</div>
+    </div>
+  </section>
+</main>
+<div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+<script>
+const sections=[...document.querySelectorAll('.section')];
+const navButtons=[...document.querySelectorAll('.side-nav button')];
+const progressText=document.getElementById('progressText');
+const root=document.documentElement;
+const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function activate(sec){
+  sections.forEach(s=>s.classList.toggle('active',s===sec));
+  navButtons.forEach(b=>b.classList.toggle('active',b.dataset.go===sec.id));
+  const idx=Number(sec.dataset.index); progressText.textContent=`${idx} / 12`;
+  root.style.setProperty('--progress',((idx-1)/11).toFixed(3));
+  sec.querySelectorAll('[data-count]').forEach(el=>countUp(el));
+}
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting) activate(e.target)}),{threshold:.55});
+sections.forEach(s=>io.observe(s));
+function scrollToId(id){document.getElementById(id)?.scrollIntoView({behavior:prefersReduced?'auto':'smooth',block:'start'})}
+navButtons.forEach(b=>b.addEventListener('click',()=>scrollToId(b.dataset.go)));
+document.querySelectorAll('[data-go]').forEach(b=>{if(!b.classList.contains('side-nav')) b.addEventListener('click',()=>scrollToId(b.dataset.go))});
+function countUp(el){if(el.dataset.done)return;el.dataset.done='1';const target=Number(el.dataset.count);if(prefersReduced){el.textContent=target.toLocaleString('zh-CN');return}let start=0;const t0=performance.now();const duration=850;function tick(t){const p=Math.min(1,(t-t0)/duration);const eased=1-Math.pow(1-p,3);el.textContent=Math.round(target*eased).toLocaleString('zh-CN');if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}
+const quote=document.getElementById('commentQuote');
+document.querySelectorAll('[data-comment]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-comment]').forEach(b=>b.classList.toggle('active',b===btn));quote.textContent=btn.dataset.comment==='a'?'“我不花父母的钱，我自给自足。”':'“房子和厨房都在父母名下，省下的钱是谁承担的？”'}));
+const ice=document.getElementById('iceTrigger'); ice?.addEventListener('click',()=>{const el=ice.parentElement;el.classList.toggle('revealed');ice.textContent=el.classList.contains('revealed')?'收起水面下':'看见水面下';el.style.background=el.classList.contains('revealed')?'linear-gradient(180deg,rgba(98,159,207,.16) 0 31%,rgba(27,91,128,.30) 31% 100%)':''});
+
+document.querySelectorAll('.flow').forEach(f=>f.addEventListener('click',()=>{const key=f.dataset.flow;document.querySelectorAll('.flow').forEach(x=>x.classList.toggle('selected',x.dataset.flow===key))}));
+const tooltip=document.getElementById('tooltip');
+document.querySelectorAll('.bubble').forEach(b=>{const show=()=>{tooltip.innerHTML=`<b>${b.dataset.city}</b><br>租金收入比 ${b.dataset.rent}%<br>独生子女比例 ${b.dataset.child}%<br>失业率 ${b.dataset.unemp}%<br>压力代理 ${b.dataset.pressure}`;tooltip.style.display='block';b.classList.add('active')};const move=e=>{tooltip.style.left=(e.clientX+14)+'px';tooltip.style.top=(e.clientY+14)+'px'};b.addEventListener('mouseenter',e=>{show();move(e)});b.addEventListener('mousemove',move);b.addEventListener('mouseleave',()=>{tooltip.style.display='none';b.classList.remove('active')});b.addEventListener('click',e=>{show();move(e);setTimeout(()=>{tooltip.style.display='none';b.classList.remove('active')},2600)});});
+window.addEventListener('scroll',()=>{if(tooltip.style.display==='block'&&!matchMedia('(pointer:fine)').matches)tooltip.style.display='none'},{passive:true});
+
+document.querySelectorAll('.layer').forEach(l=>l.addEventListener('click',()=>l.classList.toggle('open')));
+const timeDetails=['家庭还能把压力挡在门内，但这不是永久的平衡。','父母的退休金和体力开始同时变薄，隐性成本变成现金缺口。','多年没有正式工作履历，技能与市场之间出现断层。','家庭托底和市场接纳同时退场，压力从家庭溢出到社会。'];
+document.querySelectorAll('.time-node').forEach(n=>n.addEventListener('click',()=>{document.querySelectorAll('.time-node').forEach(x=>x.classList.toggle('active',x===n));document.getElementById('timelineDetail').textContent=timeDetails[Number(n.dataset.time)]}));
+const method=document.querySelector('.method-accordion');document.getElementById('methodToggle').addEventListener('click',()=>{method.classList.toggle('open');document.querySelector('#methodToggle span:last-child').textContent=method.classList.contains('open')?'－':'＋'});
+window.addEventListener('keydown',e=>{if(['ArrowDown','PageDown'].includes(e.key)){e.preventDefault();const i=Math.min(11,sections.findIndex(s=>s.classList.contains('active'))+1);scrollToId(sections[i].id)}if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();const i=Math.max(0,sections.findIndex(s=>s.classList.contains('active'))-1);scrollToId(sections[i].id)}if(e.key==='Home'){e.preventDefault();scrollToId('s1')}if(e.key==='End'){e.preventDefault();scrollToId('s12')}if(e.key==='Escape'){tooltip.style.display='none'}});
+activate(document.getElementById('s1'));
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"7939e04a4baf43c8b86a560f74aac60e","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
